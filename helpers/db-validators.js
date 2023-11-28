@@ -32,10 +32,18 @@ async function existProductById(id) {
 		throw new Error(`ID ${id} not exist on DB`);
 	}
 }
+
+async function collectionsAlloweds(collection = "", collections = []) {
+	if (!collections.includes(collection)) {
+		throw new Error(`Collection ${collection}isn't allowed ${collections}`);
+	}
+	return true;
+}
 module.exports = {
 	isValidRol,
 	existEmail,
 	existUserById,
 	existCategorieById,
 	existProductById,
+	collectionsAlloweds,
 };
